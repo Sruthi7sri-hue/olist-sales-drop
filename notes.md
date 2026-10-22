@@ -65,6 +65,6 @@
 - Rows: about 110,000 (matches expected rows from items table: yes) [check]
 - Columns: 17
 - Revenue = sum of item price, freight excluded
-- Total revenue: about 13.2 million BRL [check]
-- Reconciled to items table: yes
+- Total revenue: about 13,17,777.95 million BRL [check]
+- Reconciled to items table: yes(items total = master total = 13,179,777.95)
 - Months with the biggest revenue drops: Dec 2017 (about -25% to -30% after the Nov 2017 Black Friday peak), Jun 2018 (about -10% to -15%), and a smaller dip in Feb 2018 [check]
