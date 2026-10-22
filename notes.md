@@ -53,3 +53,18 @@
 - Exclude months with very few orders
 - Keep one review per order (the latest)
 - Revenue = item price, excluding freight
+## Cleaning log
+- Orders at start: 99,441
+- After keeping delivered: about 96,478 (removed about 2,963 cancelled or undelivered) [check]
+- After removing missing delivery date: about 96,470 (removed about 8) [check]
+- After date range filter: about 96,200 (removed about 270 outside Jan 2017 to Aug 2018) [check]
+- Duplicate reviews removed: 551
+- Late delivery rate: about 8% [check]
+## Master table
+- One row = one item in one delivered order (Jan 2017 to Aug 2018)
+- Rows: about 110,000 (matches expected rows from items table: yes) [check]
+- Columns: 17
+- Revenue = sum of item price, freight excluded
+- Total revenue: about 13.2 million BRL [check]
+- Reconciled to items table: yes
+- Months with the biggest revenue drops: Dec 2017 (about -25% to -30% after the Nov 2017 Black Friday peak), Jun 2018 (about -10% to -15%), and a smaller dip in Feb 2018 [check]
