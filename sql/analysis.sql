@@ -27,3 +27,20 @@ FROM (
 GROUP BY category_en
 ORDER BY change ASC
 LIMIT 10;
+
+-- Query 3: New vs. returning customers by month
+WITH first_order AS (
+  SELECT customer_unique_id,
+         MIN(strftime('%Y-%m', order_purchase_timestamp)) AS first_month
+  FROM master
+  GROUP BY customer_unique_id
+)
+SELECT strftime('%Y-%m', m.order_purchase_timestamp) AS month,
+       COUNT(DISTINCT CASE WHEN f.first_month = strftime('%Y-%m', m.order_purchase_timestamp)
+             THEN m.customer_unique_id END) AS new_customers,
+       COUNT(DISTINCT CASE WHEN f.first_month <> strftime('%Y-%m', m.order_purchase_timestamp)
+             THEN m.customer_unique_id END) AS returning_customers
+FROM master m
+JOIN first_order f USING (customer_unique_id)
+GROUP BY month
+ORDER BY month;
